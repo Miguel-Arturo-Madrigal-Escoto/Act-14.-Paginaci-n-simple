@@ -1,4 +1,4 @@
-# Round Robin (RR)
+# Paginación simple
 
 Flores Ontiveros Aide Sarahi
 Madrigal Escoto Miguel Arturo
