@@ -1,4 +1,7 @@
 
+from numpy import array
+
+
 class Proceso:
     
     def __init__(self, num1, num2, operador, tmax, ttrans, tbloq, id, tamanio) -> None:
@@ -21,6 +24,9 @@ class Proceso:
         self.__quantum = 0
         self.__estado = 'nuevo'
         self.__tamanio = tamanio
+        self.__marcos = []
+        self.__paginas = 0
+        self.__subpaginas = 0
         
             
     def validarOperacion(self, num2, operador) -> bool:
@@ -143,8 +149,39 @@ class Proceso:
 
     def getTamanio(self) -> int:
         return self.__tamanio
-        
-        
+
+    def setTamanio(self, tamanio) -> None:
+        self.__tamanio = tamanio
+
+    def getMarcos(self) -> list:
+        return self.__marcos
+
+    def setMarcos(self, marcos) -> None:
+        self.__marcos = marcos
+
+    # ! ---------------------------------- #
+    
+    def setPaginas(self, paginas) -> None:
+        self.__paginas = int(paginas)
+
+    def getPaginas(self) -> int:
+        return self.__paginas
+
+    def setSubpaginas(self, subpaginas) -> None:
+        if subpaginas == '25':
+            self.__subpaginas = 1
+        elif subpaginas == '5':
+            self.__subpaginas = 2
+        elif subpaginas == '75':
+            self.__subpaginas = 3
+        elif subpaginas == '0':
+            self.__subpaginas = 0
+
+    def getSubpaginas(self) -> int:
+        return self.__subpaginas
+    
+    # ! ---------------------------------- #
+            
     def getResultado(self):
         if self.__error.__eq__('') and self.__estado == 'terminado':
             if self.__operador == '+':
