@@ -4036,7 +4036,7 @@ class Ui_MainWindow(object):
 
         self.m460 = QLabel(self.centralwidget)
         self.m460.setObjectName(u"m460")
-        self.m460.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m460.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m460.setAlignment(Qt.AlignCenter)
 
@@ -4044,7 +4044,7 @@ class Ui_MainWindow(object):
 
         self.m461 = QLabel(self.centralwidget)
         self.m461.setObjectName(u"m461")
-        self.m461.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m461.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m461.setAlignment(Qt.AlignCenter)
 
@@ -4052,7 +4052,7 @@ class Ui_MainWindow(object):
 
         self.m462 = QLabel(self.centralwidget)
         self.m462.setObjectName(u"m462")
-        self.m462.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m462.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m462.setAlignment(Qt.AlignCenter)
 
@@ -4060,7 +4060,7 @@ class Ui_MainWindow(object):
 
         self.m463 = QLabel(self.centralwidget)
         self.m463.setObjectName(u"m463")
-        self.m463.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m463.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m463.setAlignment(Qt.AlignCenter)
 
@@ -4105,7 +4105,7 @@ class Ui_MainWindow(object):
 
         self.m470 = QLabel(self.centralwidget)
         self.m470.setObjectName(u"m470")
-        self.m470.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m470.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m470.setAlignment(Qt.AlignCenter)
 
@@ -4113,7 +4113,7 @@ class Ui_MainWindow(object):
 
         self.m471 = QLabel(self.centralwidget)
         self.m471.setObjectName(u"m471")
-        self.m471.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m471.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m471.setAlignment(Qt.AlignCenter)
 
@@ -4121,7 +4121,7 @@ class Ui_MainWindow(object):
 
         self.m472 = QLabel(self.centralwidget)
         self.m472.setObjectName(u"m472")
-        self.m472.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m472.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m472.setAlignment(Qt.AlignCenter)
 
@@ -4129,7 +4129,7 @@ class Ui_MainWindow(object):
 
         self.m473 = QLabel(self.centralwidget)
         self.m473.setObjectName(u"m473")
-        self.m473.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m473.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m473.setAlignment(Qt.AlignCenter)
 
@@ -4174,7 +4174,7 @@ class Ui_MainWindow(object):
 
         self.m480 = QLabel(self.centralwidget)
         self.m480.setObjectName(u"m480")
-        self.m480.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m480.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m480.setAlignment(Qt.AlignCenter)
 
@@ -4182,7 +4182,7 @@ class Ui_MainWindow(object):
 
         self.m481 = QLabel(self.centralwidget)
         self.m481.setObjectName(u"m481")
-        self.m481.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m481.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m481.setAlignment(Qt.AlignCenter)
 
@@ -4190,7 +4190,7 @@ class Ui_MainWindow(object):
 
         self.m482 = QLabel(self.centralwidget)
         self.m482.setObjectName(u"m482")
-        self.m482.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m482.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m482.setAlignment(Qt.AlignCenter)
 
@@ -4198,7 +4198,7 @@ class Ui_MainWindow(object):
 
         self.m483 = QLabel(self.centralwidget)
         self.m483.setObjectName(u"m483")
-        self.m483.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m483.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m483.setAlignment(Qt.AlignCenter)
 
@@ -4243,7 +4243,7 @@ class Ui_MainWindow(object):
 
         self.m490 = QLabel(self.centralwidget)
         self.m490.setObjectName(u"m490")
-        self.m490.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m490.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m490.setAlignment(Qt.AlignCenter)
 
@@ -4251,7 +4251,7 @@ class Ui_MainWindow(object):
 
         self.m491 = QLabel(self.centralwidget)
         self.m491.setObjectName(u"m491")
-        self.m491.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m491.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m491.setAlignment(Qt.AlignCenter)
 
@@ -4259,7 +4259,7 @@ class Ui_MainWindow(object):
 
         self.m492 = QLabel(self.centralwidget)
         self.m492.setObjectName(u"m492")
-        self.m492.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m492.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m492.setAlignment(Qt.AlignCenter)
 
@@ -4267,7 +4267,7 @@ class Ui_MainWindow(object):
 
         self.m493 = QLabel(self.centralwidget)
         self.m493.setObjectName(u"m493")
-        self.m493.setStyleSheet(u"background-color: #df00ff;\n"
+        self.m493.setStyleSheet(u"background-color: #212731;\n"
 "color: rgb(0, 0, 0);")
         self.m493.setAlignment(Qt.AlignCenter)
 

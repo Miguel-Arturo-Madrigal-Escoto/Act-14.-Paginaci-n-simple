@@ -1,15 +1,12 @@
-import threading
 from PySide2.QtWidgets import QMainWindow, QTableWidgetItem
-from PySide2.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QWidget
+from PySide2.QtWidgets import QMainWindow, QLabel
 from PySide2.QtCore import Slot, QCoreApplication
 from advertencia import notify
 from bcp.bcp import BCP
-from src.cola_listos import ColaListos
 from src.proceso import Proceso
 from ui_mainwindow import Ui_MainWindow
 from random import randint, choice
 from time import sleep
-from math import ceil
 import keyboard
 
 
@@ -26,7 +23,7 @@ class MainWindow(QMainWindow):
         # ? boton de ejecutar
         self.ui.ejecutarBtn.clicked.connect(self.comenzarEjecucion)
 
-        # proceso
+        # procesos id
         self.ids = []
    
         self.procesos = []
@@ -60,21 +57,6 @@ class MainWindow(QMainWindow):
         self.v = BCP(self.procesos)
 
         self.setAlternateColorsTables()
-
-        #! Estilos del label
-        # label:QLabel = self.findChild(QLabel, 'label' + str(self.consumidor.get_indice()))
-        # label.setStyleSheet('Border: 5px solid ' + color + '; background-color: ' + color)
-        # Todo 
-        # ? dic = {'0': ([(0, '#12ff00'), (1, '#12ff00'), (2, '#12ff00'), (3, '#12ff00')], id_proceso) }
-        
-        """ ['#fff', False, False, False]
-        [False, False, False, False]
-        [False, False, False, False]
-        [False, False, False, False]
-        [False, False, False, False]
-        [False, False, False, False] 
-        [False, False, False, False]
-        [False, False, False, False] """
 
         self.marcos = [[ True, True, True, True ] for _ in range (46)]
         
@@ -166,23 +148,8 @@ class MainWindow(QMainWindow):
 
     def procesar(self):
         self.setInicio()  # * limpiar los procesos y lo grafico
-        # Todo: clasificar procesos
-        """ self.cola_listos = self.procesos[0:10]
-        for i in self.cola_listos:
-            # cambiar a listo
-            i.setEstado('listo')
-            i.setTLL(self.time)
 
-        self.cola_nuevos = self.procesos[10:]
-        self.setProcesosListos() """
-        # almacenamiento = 0
-        # for pr in self.procesos:
-        #     total_marcos = (int(pr.getPaginas()) + 1) if int(pr.getSubpaginas()) != 0 else int(pr.getPaginas())
-        #     if (almacenamiento + total_marcos) <= 45:
-        #         self.cola_listos.append(pr)
-        #     else:
-        #         self.cola_nuevos.append(pr)
-        
+        # Todo: clasificar procesos
         for pr in self.procesos:
             # ? se guardan los indices de los marcos disponibles, true = disponible
             marcos_disponibles = []
@@ -371,6 +338,7 @@ class MainWindow(QMainWindow):
             operacion = f'{ proceso.getNum1() } { proceso.getOperador() } { proceso.getNum2() }'
         else:
             operacion = 'NULL'
+
         tmax = proceso.getTMax()
         id = str(proceso.getID())
 
@@ -698,7 +666,6 @@ class MainWindow(QMainWindow):
 
             if opc == 'p' or opc == 'a':
                 self.pause = True
-
 
             elif opc == 'c':
                 self._continue = True

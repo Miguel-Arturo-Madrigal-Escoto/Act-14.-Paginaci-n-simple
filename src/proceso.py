@@ -16,7 +16,7 @@ class Proceso:
         self.__tll = 0 #llegada
         self.__tf = 0 #final
         self.__tret = 0 #retorno
-        self.__tres = 0 #respuesta
+        self.__tres = 0 #respuestaf
         self.__te = 0 #espera
         self.__ts = 0 #servicio
         self.__error = ''

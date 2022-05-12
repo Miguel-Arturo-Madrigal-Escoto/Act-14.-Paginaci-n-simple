@@ -6509,7 +6509,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m460">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6523,7 +6523,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m461">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6537,7 +6537,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m462">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6551,7 +6551,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m463">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6621,7 +6621,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m470">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6635,7 +6635,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m471">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6649,7 +6649,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m472">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6663,7 +6663,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m473">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6730,7 +6730,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m480">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6744,7 +6744,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m481">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6758,7 +6758,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m482">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6772,7 +6772,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m483">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6842,7 +6842,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m490">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6856,7 +6856,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m491">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6870,7 +6870,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m492">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
@@ -6884,7 +6884,7 @@ color: rgb(0, 0, 0);</string>
           <item>
            <widget class="QLabel" name="m493">
             <property name="styleSheet">
-             <string notr="true">background-color: #df00ff;
+             <string notr="true">background-color: #212731;
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
