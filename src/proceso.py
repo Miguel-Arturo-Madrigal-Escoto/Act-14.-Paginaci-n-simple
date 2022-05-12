@@ -13,10 +13,10 @@ class Proceso:
         self.__tbloq = tbloq
         self.__id = id
         self.__cont = 1
-        self.__tll = -1 #llegada
-        self.__tf = -1 #final
-        self.__tret = -1 #retorno
-        self.__tres = -1 #respuesta
+        self.__tll = 0 #llegada
+        self.__tf = 0 #final
+        self.__tret = 0 #retorno
+        self.__tres = 0 #respuesta
         self.__te = 0 #espera
         self.__ts = 0 #servicio
         self.__error = ''

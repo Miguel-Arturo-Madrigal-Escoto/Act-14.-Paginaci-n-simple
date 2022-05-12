@@ -111,12 +111,29 @@ class MainWindow(QMainWindow):
         self.procesos.append(proceso)
         
         if new:
-            # validar solo 5 procesos en memoria
-            if len(self.cola_listos) + len(self.cola_bloqueados) < 4:
-                # cambiar a listo
-                proceso.setEstado('listo')
+            marcos_disponibles = []
+            i = 0
+            while i < len(self.marcos):
+                aux = self.marcos[i]
+                if aux[0]:
+                    marcos_disponibles.append(i)
+                i += 1
+
+            # ? contar la cantidad de marcos que necesita el proceso (paginas + 1 si subpaginas != 0)? paginas
+            total_marcos = (int(proceso.getPaginas()) + 1) if int(proceso.getSubpaginas()) != 0 else int(proceso.getPaginas())
+
+            if total_marcos <= len(marcos_disponibles):
+                proceso.setMarcos(marcos_disponibles[0 : total_marcos])
+
                 proceso.setTLL(self.time)
+                proceso.setEstado('listo')
                 self.cola_listos.append(proceso)
+
+                swap = proceso.getMarcos() # lista con ids disponibles de los marcos
+                for s in swap:
+                    self.marcos[s] = [False, False, False, False]
+                
+                #self.encolarTablaListos(proceso)
             else:
                 self.cola_nuevos.append(proceso)
     
@@ -150,29 +167,23 @@ class MainWindow(QMainWindow):
     def procesar(self):
         self.setInicio()  # * limpiar los procesos y lo grafico
         # Todo: clasificar procesos
-        self.cola_listos = self.procesos[0:5]
+        """ self.cola_listos = self.procesos[0:10]
         for i in self.cola_listos:
             # cambiar a listo
             i.setEstado('listo')
             i.setTLL(self.time)
 
-        self.cola_nuevos = self.procesos[5:]
-        self.setProcesosListos()
-
-        # para que TF = time en el proceso final
-        self.ui.labelCGlobal.setText('  ' + str(self.time))
-
- 
-    def setProcesosListos(self):
-        # establecer el label de los procesos nuevos
-        self.ui.labelPendientes.setText(str(f'  { len(self.cola_nuevos) }'))
-
-        for pr in self.cola_listos:
-            self.encolarTablaListos(pr)
-
-            # * Establecer los frames que ocupa el proceso listo
-            # 5
-            # [2, 7, 9, 12]
+        self.cola_nuevos = self.procesos[10:]
+        self.setProcesosListos() """
+        # almacenamiento = 0
+        # for pr in self.procesos:
+        #     total_marcos = (int(pr.getPaginas()) + 1) if int(pr.getSubpaginas()) != 0 else int(pr.getPaginas())
+        #     if (almacenamiento + total_marcos) <= 45:
+        #         self.cola_listos.append(pr)
+        #     else:
+        #         self.cola_nuevos.append(pr)
+        
+        for pr in self.procesos:
             # ? se guardan los indices de los marcos disponibles, true = disponible
             marcos_disponibles = []
             i = 0
@@ -187,20 +198,25 @@ class MainWindow(QMainWindow):
 
             if total_marcos <= len(marcos_disponibles):
                 pr.setMarcos(marcos_disponibles[0 : total_marcos])
+                self.cola_listos.append(pr)
                 swap = pr.getMarcos() # lista con ids disponibles de los marcos
                 for s in swap:
                     self.marcos[s] = [False, False, False, False]
                     
             else:
-                print('No hay marcos disponibles')
+                self.cola_nuevos.append(pr)
+        
+        self.setProcesosListos()
+        # para que TF = time en el proceso final
+        self.ui.labelCGlobal.setText('  ' + str(self.time))
 
-            
-            # 4
+ 
+    def setProcesosListos(self):
+        # establecer el label de los procesos nuevos
+        self.ui.labelPendientes.setText(str(f'  { len(self.cola_nuevos) }'))
 
-            #
-            # last_frame = 789.....38....3942...434445
-
-
+        for pr in self.cola_listos:
+            self.encolarTablaListos(pr)
             
         # mientras hayan procesos listos        
         while self.cola_listos or self.cola_bloqueados:     
@@ -214,31 +230,135 @@ class MainWindow(QMainWindow):
             if not self.cola_listos and self.cola_bloqueados:
                 bloqueado = self.cola_bloqueados[0]
                 self.left = 8 - bloqueado.getCont()
-                proc = Proceso(0, 0, '+', self.left, 0, 0, 'NULL')
+                proc = Proceso(0, 0, '+', self.left, 0, 0, 'NULL', 0)
                 self.cola_listos.append(proc)
 
             if not self.cola_listos:
                 self.limpiarProcesoActual()
                 return
-
+                
     
-    def pintarTablaPaginas(self, actual):
+    def pintarSubpaginas(self, proceso: Proceso):
+        if str(proceso.getID()) == 'NULL':
+            return 
+
+        last = proceso.getMarcos()[-1]
+        color = '#fff'
+        i = 0
+        while i < 4:
+            labelColor:QLabel = self.findChild(QLabel,  f'm{last}{i}')
+            labelColor.setStyleSheet(f'background-color: {color};')
+            i += 1
+            
+        estado = proceso.getEstado()
+        if estado == 'listo':
+            color = '#75bee9'
+        elif estado == 'ejecucion':
+            color = '#12ff00'
+        elif estado == 'bloqueado':
+            color = '#e45265'
+        elif estado == 'listo':
+            color = '#fbff00'
+
+        if proceso.getSubpaginas():
+            j = 0
+            while j < proceso.getSubpaginas():
+                labelColor:QLabel = self.findChild(QLabel,  f'm{last}{j}')
+                labelColor.setStyleSheet(f'background-color: {color};')
+                j += 1
+        else:
+            k = 0
+            while k < 4:
+                labelColor:QLabel = self.findChild(QLabel,  f'm{last}{k}')
+                labelColor.setStyleSheet(f'background-color: {color};')
+                k += 1
+
+    def liberarMemoria(self, proceso: Proceso):
+        for marco in proceso.getMarcos():
+            # quitar id del proceso de la memoria
+            labelID:QLabel = self.findChild(QLabel, 'tablaID' + str(marco))
+            labelID.setText(str(' '))
+
+            i = 0
+            while i < 4:
+                # quitar los marcos del proceso
+                labelColor:QLabel = self.findChild(QLabel,  f'm{marco}{i}')
+                labelColor.setStyleSheet('background-color: #fff;')
+                i += 1
+            
+        swap = proceso.getMarcos() # lista con ids disponibles de los marcos
+        for s in swap:
+            self.marcos[s] = [True, True, True, True]
+
+
+    def pintarTablaPaginas(self, ejecucion: Proceso):
         # ? dic = {'0': ([(0, '#12ff00'), (1, '#12ff00'), (2, '#12ff00'), (3, '#12ff00')], id_proceso)
 
-        # ? proceso actual
-        for marco in actual.getMarcos():
+        # * proceso actual #12ff00
+        for marco in ejecucion.getMarcos():
             labelID:QLabel = self.findChild(QLabel, 'tablaID' + str(marco))
-            labelID.setText(str(actual.getID()))
+            labelID.setText(str(ejecucion.getID()))
 
+            i = 0
+            while i < 4:
+                labelColor:QLabel = self.findChild(QLabel,  f'm{marco}{i}')
+                labelColor.setStyleSheet('background-color: #12ff00;')
+                i += 1
+                
+        self.pintarSubpaginas(ejecucion)
+
+        # ? procesos listos #75bee9
         for proceso in self.cola_listos:
             print(f'El proceso { proceso.getID() } tiene disponibles los { proceso.getMarcos() } y tiene un tamaño de { proceso.getTamanio() }')
-            # label:QLabel = self.findChild(QLabel, 'label' + str(self.consumidor.get_indice()))
-            #label.setStyleSheet('Border: 5px solid ' + color + '; background-color: ' + color)
 
             for marco in proceso.getMarcos():
                 labelID:QLabel = self.findChild(QLabel, 'tablaID' + str(marco))
                 labelID.setText(str(proceso.getID()))
-        
+
+                i = 0
+                while i < 4:
+                    labelColor:QLabel = self.findChild(QLabel,  f'm{marco}{i}')
+                    labelColor.setStyleSheet('background-color: #75bee9;')
+                    i += 1
+                    
+            #self.pintarSubpaginas(proceso)
+            if str(proceso.getID()) != 'NULL':
+                last = proceso.getMarcos()[-1]
+                color = '#fff'
+                i = 0
+                while i < 4:
+                    labelColor:QLabel = self.findChild(QLabel,  f'm{last}{i}')
+                    labelColor.setStyleSheet(f'background-color: {color};')
+                    i += 1
+
+                if proceso.getSubpaginas():
+                    j = 0
+                    while j < proceso.getSubpaginas():
+                        labelColor:QLabel = self.findChild(QLabel,  f'm{last}{j}')
+                        labelColor.setStyleSheet(f'background-color: #75bee9;')
+                        j += 1
+                else:
+                    k = 0
+                    while k < 4:
+                        labelColor:QLabel = self.findChild(QLabel,  f'm{last}{k}')
+                        labelColor.setStyleSheet(f'background-color: #75bee9;')
+                        k += 1
+
+        # ! procesos bloqueados #e45265
+        for proceso in self.cola_bloqueados:
+            print(f'El proceso { proceso.getID() } tiene disponibles los { proceso.getMarcos() } y tiene un tamaño de { proceso.getTamanio() }')
+
+            for marco in proceso.getMarcos():
+                labelID:QLabel = self.findChild(QLabel, 'tablaID' + str(marco))
+                labelID.setText(str(proceso.getID()))
+
+                i = 0
+                while i < 4:
+                    labelColor:QLabel = self.findChild(QLabel,  f'm{marco}{i}')
+                    labelColor.setStyleSheet('background-color: #e45265;')
+                    i += 1
+
+            self.pintarSubpaginas(proceso)
 
 
     def procesoActual(self, proceso:Proceso):
@@ -262,9 +382,10 @@ class MainWindow(QMainWindow):
         self.ui.labelQuantum_2.setText('  ' + '0')
 
         for i in range(transcurrido, tmax):
-
+            print(f'El proceso { proceso.getID() } tiene disponibles los { proceso.getMarcos() } y tiene un tamaño de { proceso.getTamanio() }')
+            
             # Todo: pintar todo xd
-            self.pintarTablaPaginas(actual=proceso)
+            self.pintarTablaPaginas(ejecucion=proceso)
 
             self.ui.labelPendientes.setText(str(f'  { len(self.cola_nuevos) }'))
 
@@ -372,6 +493,9 @@ class MainWindow(QMainWindow):
                 self.v.hide()
 
         if str(proceso.getID()) != 'NULL':
+            #pintar memoria en blanco y liberar el self.marco
+            self.liberarMemoria(proceso)
+
             self.encolarNuevoAListo()
             self.establecerTiempos(proceso)
             # cambiar a terminado
@@ -411,14 +535,52 @@ class MainWindow(QMainWindow):
 
     def encolarNuevoAListo(self):
         # ? pasa de procesos nuevo a listo
-        if self.cola_nuevos and len(self.cola_listos) < 5:
-            listo = self.cola_nuevos.pop(0)
-            # asignar tiempo de llegada (contador global)
-            listo.setTLL(self.time)
-            listo.setEstado('listo')
-            self.ui.labelPendientes.setText(str(f'   { len(self.cola_nuevos) }  '))
-            self.cola_listos.append(listo)  
-            self.encolarTablaListos(listo)
+        # if self.cola_nuevos and len(self.cola_listos) < 5:
+        #     listo = self.cola_nuevos.pop(0)
+        #     # asignar tiempo de llegada (contador global)
+        #     listo.setTLL(self.time)
+        #     listo.setEstado('listo')
+        #     self.ui.labelPendientes.setText(str(f'   { len(self.cola_nuevos) }  '))
+        #     self.cola_listos.append(listo)  
+
+        for pr in self.cola_nuevos:
+            # ? se guardan los indices de los marcos disponibles, true = disponible
+            marcos_disponibles = []
+            i = 0
+            while i < len(self.marcos):
+                aux = self.marcos[i]
+                if aux[0]:
+                    marcos_disponibles.append(i)
+                i += 1
+
+            # ? contar la cantidad de marcos que necesita el proceso (paginas + 1 si subpaginas != 0)? paginas
+            total_marcos = (int(pr.getPaginas()) + 1) if int(pr.getSubpaginas()) != 0 else int(pr.getPaginas())
+
+            if total_marcos <= len(marcos_disponibles):
+                pr.setMarcos(marcos_disponibles[0 : total_marcos])
+                self.cola_nuevos.pop(self.cola_nuevos.index(pr))
+
+                pr.setTLL(self.time)
+                pr.setEstado('listo')
+                self.cola_listos.append(pr)
+
+                swap = pr.getMarcos() # lista con ids disponibles de los marcos
+                for s in swap:
+                    self.marcos[s] = [False, False, False, False]
+                
+                self.encolarTablaListos(pr)
+                    
+            else:
+                break
+
+        self.ui.labelPendientes.setText(str(f'   { len(self.cola_nuevos) }  '))
+        
+        if self.cola_nuevos:
+            self.ui.idProximoNuevo.setText(str(f'  { self.cola_nuevos[0].getID() }'))
+            self.ui.tamanioProximoNuevo.setText(str(f'  { self.cola_nuevos[0].getTamanio() }'))
+        else:
+            self.ui.idProximoNuevo.setText(str(f''))
+            self.ui.tamanioProximoNuevo.setText(str(f''))
 
  
     def encolarBloqueado(self):
@@ -560,9 +722,3 @@ class MainWindow(QMainWindow):
 
         except:
             pass
-    
-   
-
-
-
-    

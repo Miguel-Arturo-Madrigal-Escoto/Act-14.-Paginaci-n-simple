@@ -2333,13 +2333,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_69.addWidget(self.m212)
 
-        self.m213_2 = QLabel(self.centralwidget)
-        self.m213_2.setObjectName(u"m213_2")
-        self.m213_2.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+        self.m213 = QLabel(self.centralwidget)
+        self.m213.setObjectName(u"m213")
+        self.m213.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);")
-        self.m213_2.setAlignment(Qt.AlignCenter)
+        self.m213.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_69.addWidget(self.m213_2)
+        self.horizontalLayout_69.addWidget(self.m213)
 
 
         self.horizontalLayout_67.addLayout(self.horizontalLayout_69)
@@ -2402,13 +2402,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_77.addWidget(self.m222)
 
-        self.m213 = QLabel(self.centralwidget)
-        self.m213.setObjectName(u"m213")
-        self.m213.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+        self.m223 = QLabel(self.centralwidget)
+        self.m223.setObjectName(u"m223")
+        self.m223.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);")
-        self.m213.setAlignment(Qt.AlignCenter)
+        self.m223.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_77.addWidget(self.m213)
+        self.horizontalLayout_77.addWidget(self.m223)
 
 
         self.horizontalLayout_76.addLayout(self.horizontalLayout_77)
@@ -2540,13 +2540,13 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_65.addWidget(self.m242)
 
-        self.m244 = QLabel(self.centralwidget)
-        self.m244.setObjectName(u"m244")
-        self.m244.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+        self.m243 = QLabel(self.centralwidget)
+        self.m243.setObjectName(u"m243")
+        self.m243.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);")
-        self.m244.setAlignment(Qt.AlignCenter)
+        self.m243.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_65.addWidget(self.m244)
+        self.horizontalLayout_65.addWidget(self.m243)
 
 
         self.horizontalLayout_64.addLayout(self.horizontalLayout_65)
@@ -4597,7 +4597,7 @@ class Ui_MainWindow(object):
         self.m210.setText("")
         self.m211.setText("")
         self.m212.setText("")
-        self.m213_2.setText("")
+        self.m213.setText("")
         self.tablaID22.setText("")
         self.label_177.setText("")
         self.label_178.setText(QCoreApplication.translate("MainWindow", u"22", None))
@@ -4605,7 +4605,7 @@ class Ui_MainWindow(object):
         self.m220.setText("")
         self.m221.setText("")
         self.m222.setText("")
-        self.m213.setText("")
+        self.m223.setText("")
         self.label_180.setText("")
         self.tablaID23.setText("")
         self.label_181.setText("")
@@ -4622,7 +4622,7 @@ class Ui_MainWindow(object):
         self.m240.setText("")
         self.m241.setText("")
         self.m242.setText("")
-        self.m244.setText("")
+        self.m243.setText("")
         self.label_152.setText("")
         self.tablaID25.setText("")
         self.label_153.setText("")

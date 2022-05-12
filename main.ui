@@ -3788,7 +3788,7 @@ color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="m213_2">
+           <widget class="QLabel" name="m213">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
@@ -3897,7 +3897,7 @@ color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="m213">
+           <widget class="QLabel" name="m223">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
@@ -4118,7 +4118,7 @@ color: rgb(0, 0, 0);</string>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="m244">
+           <widget class="QLabel" name="m243">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
 color: rgb(0, 0, 0);</string>
